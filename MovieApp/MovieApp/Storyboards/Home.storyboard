@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gzC-54-0Kf">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,39 +15,162 @@
             <objects>
                 <viewController id="Rvx-So-KR9" customClass="HomeViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RXr-YH-Gf9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hPl-o1-sNC">
-                                <rect key="frame" x="0.0" y="0.0" width="429" height="896"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vdl-cy-iKU">
+                                <rect key="frame" x="20" y="79" width="374" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="Popular"/>
+                                    <segment title="Now Playing"/>
+                                    <segment title="Top Rated"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="diffCat:" destination="Rvx-So-KR9" eventType="valueChanged" id="fsQ-Ip-dOg"/>
+                                </connections>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hPl-o1-sNC">
+                                <rect key="frame" x="20" y="125" width="374" height="611"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="R0f-wO-y3o">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="151" height="208"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3Bc-kM-H6X">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieGridCell" id="3Bc-kM-H6X" customClass="MovieCollectionViewCell" customModule="MovieApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="151" height="208"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="151" height="208"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yP4-dM-GDz" customClass="CustomView" customModule="MovieApp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="151" height="207"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="Y6X-s2-Cun" appends="YES" id="erL-gt-QPG"/>
+                                                    </connections>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="24_Fire-512" translatesAutoresizingMaskIntoConstraints="NO" id="z0W-Kx-yZx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="27" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Was-OV-l5B">
+                                                    <rect key="frame" x="29" y="9" width="29" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart-png-15" translatesAutoresizingMaskIntoConstraints="NO" id="Jt6-Cp-T87">
+                                                    <rect key="frame" x="66" y="111" width="65" height="68"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="Y6X-s2-Cun" appends="YES" id="wWG-1C-eR6"/>
+                                                    </connections>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <gestureRecognizers/>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="Jt6-Cp-T87"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="like" destination="Jt6-Cp-T87" id="Cmn-Oa-N5R"/>
+                                            <outlet property="posterView" destination="yP4-dM-GDz" id="yT0-Bb-vCH"/>
+                                            <outlet property="trend" destination="Was-OV-l5B" id="0X7-w9-14G"/>
+                                            <outletCollection property="gestureRecognizers" destination="Y6X-s2-Cun" appends="YES" id="k1k-0C-gxz"/>
+                                            <segue destination="dh0-FT-5Vu" kind="show" id="edG-tF-Luy"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Y6X-s2-Cun" appends="YES" id="JUO-lU-Lnc"/>
+                                </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nLt-Jq-Yud"/>
                     </view>
-                    <navigationItem key="navigationItem" id="h50-iK-9yC"/>
+                    <navigationItem key="navigationItem" id="h50-iK-9yC">
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" title="Profile" springLoaded="YES" id="4TQ-Pg-PUH"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="categoty" destination="vdl-cy-iKU" id="2zS-Dd-GKT"/>
+                        <outlet property="collectionView" destination="hPl-o1-sNC" id="NWb-sc-jxe"/>
+                        <outletCollection property="Categories" destination="vdl-cy-iKU" collectionClass="NSMutableArray" id="24j-2Y-07O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDu-gd-SRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer enabled="NO" numberOfTapsRequired="2" id="Y6X-s2-Cun"/>
             </objects>
-            <point key="canvasLocation" x="876.81159420289862" y="172.76785714285714"/>
+            <point key="canvasLocation" x="876.81159420289862" y="172.0108695652174"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="7La-cj-Hac">
+            <objects>
+                <viewController id="dh0-FT-5Vu" customClass="DetailsViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MQn-L6-kLX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Lx-g8-jEm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="289"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylj-yM-bl0">
+                                <rect key="frame" x="150" y="297" width="244" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccC-4m-7g6">
+                                <rect key="frame" x="20" y="391" width="374" height="183"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjO-oD-Gro">
+                                <rect key="frame" x="150" y="326" width="244" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DYc-Pv-KPK">
+                                <rect key="frame" x="20" y="232" width="108" height="151"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9ir-yb-WfY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WWm-fo-0FK"/>
+                    <connections>
+                        <outlet property="BackDropView" destination="3Lx-g8-jEm" id="YxZ-dJ-8kF"/>
+                        <outlet property="PosterImage" destination="DYc-Pv-KPK" id="Kmq-E0-qbg"/>
+                        <outlet property="SynopsisLable" destination="ccC-4m-7g6" id="3OK-X0-NS1"/>
+                        <outlet property="TitleLabel" destination="ylj-yM-bl0" id="6gX-hj-6Ah"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9h-Cc-fVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1642.0289855072465" y="171.19565217391306"/>
         </scene>
         <!--Home-->
         <scene sceneID="WzV-Qo-Uv7">
@@ -55,12 +178,16 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gzC-54-0Kf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="RGK-jG-l8K"/>
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aps-T3-R3c">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="4Iz-q2-lD5">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Rvx-So-KR9" kind="relationship" relationship="rootViewController" id="Mk9-L2-FSK"/>
                     </connections>
@@ -70,4 +197,8 @@
             <point key="canvasLocation" x="-33.333333333333336" y="172.76785714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="24_Fire-512" width="512" height="512"/>
+        <image name="heart-png-15" width="2000" height="1814"/>
+    </resources>
 </document>
