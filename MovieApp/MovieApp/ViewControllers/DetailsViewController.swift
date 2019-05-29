@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import Parse
 
 class DetailsViewController: UIViewController {
 
@@ -42,5 +43,13 @@ class DetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func OnLogout(_ sender: Any) {
+        if (PFUser.current() == nil) {return;}
+        PFUser.logOut()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let Login = storyboard.instantiateViewController(withIdentifier: "Login") as! UIViewController
+        self.present(Login, animated: true, completion: nil)
+        
+    }
+    
 }

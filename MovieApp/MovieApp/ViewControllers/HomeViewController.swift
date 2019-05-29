@@ -8,12 +8,21 @@
 
 import UIKit
 import AlamofireImage
+import Parse
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     var movies = [[String:Any]]()
     var url = URL(string: "")
     
+    @IBAction func onlogout(_ sender: Any) {
+        if (PFUser.current() == nil) {return;}
+        PFUser.logOut()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let Login = storyboard.instantiateViewController(withIdentifier: "Login") as! UIViewController
+        self.present(Login, animated: true, completion: nil)
+        
+    }
     
     /*@IBAction func goBack(_ sender: Any) {
      self.performSegue(withIdentifier: "Present", sender: sender)
@@ -161,7 +170,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let posterPath = movie["poster_path"] as! String
         let posterUrl = URL(string: baseUrl + posterPath)
         cell.posterView.af_setImage(withURL: posterUrl!)
-        cell.trend.text = "7"
+        cell.trend.text = "218"
         //cell.Trend.text = "100"
         
         return cell
